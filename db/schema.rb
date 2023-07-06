@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_04_005732) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_06_084336) do
   create_table "draftees", force: :cascade do |t|
     t.string "full_name"
     t.string "team"
@@ -33,18 +33,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_04_005732) do
   end
 
   create_table "stats", force: :cascade do |t|
-    t.string "team"
     t.integer "wins"
     t.integer "losses"
     t.integer "ot"
     t.integer "points"
     t.float "perecentage"
     t.integer "conference_rank"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "team_id"
     t.integer "goals_scored"
     t.integer "goals_conceded"
+    t.integer "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "teams", force: :cascade do |t|

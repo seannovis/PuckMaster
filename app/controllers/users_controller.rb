@@ -5,12 +5,16 @@ before_action :authorized, only: :show
 rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
     def create
-        if params[:password] != params[:password_confirmation]
-            render json: {error: "Passwords do not match"}, status: :unprocessable_entity
+        if session[:id]
+            if params[:password] != params[:password_confirmation]
+                render json: {error: "Passwords do not match"}, status: :unprocessable_entity
+            else
+                user = User.create!(user_params)
+                session[:user_id] = user.id 
+                render json: user, status: :created
+            end
         else
-            user = User.create!(user_params)
-            session[:user_id] = user.id 
-            render json: user, status: :created
+            render json: {error: "Can't create new user while logged in"}, status: :unprocessable_entity
         end
     end
 

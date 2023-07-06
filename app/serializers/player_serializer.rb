@@ -1,3 +1,3 @@
 class PlayerSerializer < ActiveModel::Serializer
-  attributes :full_name, :jersey_number, :position
+  attributes :id, :full_name, :jersey_number, :position
 end

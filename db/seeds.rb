@@ -40,7 +40,6 @@ require 'json'
 # stats["records"].each do |record|
 #     record["teamRecords"].each do |team|
 #     Stat.create(
-#         team: team["team"]["name"],
 #         wins: team["leagueRecord"]["wins"],
 #         losses: team["leagueRecord"]["losses"],
 #         ot: team["leagueRecord"]["ot"],
@@ -53,7 +52,6 @@ require 'json'
 #     )
 #     end
 # end
-
 
 
 # loop do
@@ -71,7 +69,7 @@ require 'json'
 #             )
 #         end
 #     else 
-#         break
+#         next
 #     end
 #     team_id += 1
 # end
