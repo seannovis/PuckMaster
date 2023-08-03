@@ -1,6 +1,7 @@
 class PlayersController < ApplicationController
 
-before_action :authorized, only: [:update, :create, :destroy]
+before_action :admin_authorization, only: [:update, :create]
+before_action :viewing_authorization, only: [:index, :show]
 
 rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
@@ -15,35 +16,25 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
     end
 
     def show
-        player = find_player
-        render json: player, status: :ok
+        player = Player.find(params[:id])
+        render json: player, serializer: PlayerProfileSerializer, status: :ok
     end
 
     def update
-        player = find_player
+        player = Player.find(params[:id])
         player.update!(player_params)
         render json: player, status: :ok
     end
 
     def create
         player = Player.create!(player_params)
-        render json: player, serializer: PlayerIdSerializer, status: :created
-    end
-
-    def destroy
-        player = find_player
-        player.destroy
-        head :no_content
+        render json: player, serializer: PlayerProfileSerializer, status: :created
     end
 
     private
 
     def player_params
-        params.permit(:team_id, :full_name, :jersey_number, :position)
-    end
-
-    def find_player
-        Player.find(params[:id])
+        params.permit(:team_id, :full_name, :jersey_number, :position, :active, :current_team, :hand)
     end
 
     def render_not_found
@@ -54,8 +45,14 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
         render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
     end
 
-    def authorized
-        render json: {error: "Unauthorized"}, status: :unauthorized unless session.include? :user_id
+    def admin_authorization
+        render json: {error: "Only admins can update content"}, status: :unauthorized unless session.include? :admin_id
+    end
+
+    def viewing_authorization
+        unless session.include?(:admin_id) || session.include?(:user_id)
+            render json: { error: "Unauthorized" }, status: :unauthorized
+        end
     end
 
 end

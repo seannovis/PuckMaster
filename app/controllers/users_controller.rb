@@ -1,40 +1,85 @@
 class UsersController < ApplicationController
-
-before_action :authorized, only: :show
-
-rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
-
+    before_action :authorized, only: :show
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
+     
     def create
-        if session[:id]
-            if params[:password] != params[:password_confirmation]
-                render json: {error: "Passwords do not match"}, status: :unprocessable_entity
-            else
-                user = User.create!(user_params)
-                session[:user_id] = user.id 
+        if params[:token].present?
+            token = AdminToken.find_by(token: params[:token], active: false)
+            if token
+                token.update(active: true)
+                user = User.create!(user_params.merge(admin: true))
+                session[:admin_id] = token.id
                 render json: user, status: :created
+            else
+                render json: { error: "Admin token not valid" }, status: :unprocessable_entity
             end
+        elsif params[:password] != params[:password_confirmation]
+            render json: { error: "Passwords do not match" }, status: :unprocessable_entity
         else
-            render json: {error: "Can't create new user while logged in"}, status: :unprocessable_entity
+            user = User.create!(user_params)
+            session[:user_id] = user.id 
+            render json: user, status: :created
         end
     end
-
+  
     def show
-        user = User.find(session[:user_id])
+        if session[:user_id]
+            user = User.find(session[:user_id])
+        elsif session[:admin_id]
+            user = User.find(session[:admin_id])
+        end
         render json: user, status: :ok
     end
 
+    def update_bio
+        user = find_user
+        user.bio = user_params[:bio]
+        user.save(validate: false)
+    end
+
+    def update_username
+        user = find_user
+        user.username = user_params[:username]
+        user.save(validate: false)
+    end
+
+    def update_token
+        user = find_user
+        if params[:token].present?
+            token = AdminToken.find_by(token: params[:token], active: false)
+            if token
+                token.update(active: true)
+                user.token = user_params[:token]
+                session[:admin_id] = token.id
+                user.admin = true
+                user.save(validate: false)
+            else
+                render json: { error: "Admin token not valid" }, status: :unprocessable_entity
+            end
+        end
+    end
+  
     private
-
+  
     def user_params
-        params.permit(:username, :password, :password_confirmation)
+        params.permit(:username, :password, :password_confirmation, :token, :bio, :icon, :admin)
     end
 
-    def render_unprocessable_entity(invalid)
-        render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
+    def find_user
+        User.find_by(username: params[:username])
     end
-
+  
+    def render_unprocessable_entity
+        render json: { error: "Must enter valid username and password" }, status: :unprocessable_entity
+    end
+  
     def authorized
-        render json: {error: "Unauthorized"}, status: :unauthorized unless session.include? :user_id
+        unless session.include?(:admin_id) || session.include?(:user_id)
+            render json: { error: "Unauthorized" }, status: :unauthorized
+        end
     end
+    
+  end
+  
 
-end
+  

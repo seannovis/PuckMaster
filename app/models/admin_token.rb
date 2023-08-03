@@ -1,0 +1,2 @@
+class AdminToken < ApplicationRecord
+end

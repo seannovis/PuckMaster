@@ -1,5 +1,3 @@
 class DrafteeSerializer < ActiveModel::Serializer
-  attributes :full_name, :team, :overall_pick
-
-  belongs_to :team, serializer: DrafteeTeamSerializer
+  attributes :id, :full_name, :current_team, :jersey_number, :position
 end

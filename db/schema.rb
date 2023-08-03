@@ -10,14 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_06_084336) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_01_035111) do
+  create_table "admin_tokens", force: :cascade do |t|
+    t.string "token"
+    t.boolean "active", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "draftees", force: :cascade do |t|
     t.string "full_name"
-    t.string "team"
-    t.string "year"
+    t.string "current_team"
+    t.integer "jersey_number"
+    t.string "position"
     t.integer "round"
-    t.integer "round_pick"
     t.integer "overall_pick"
+    t.string "hand"
     t.integer "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -25,11 +33,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_06_084336) do
 
   create_table "players", force: :cascade do |t|
     t.string "full_name"
+    t.string "current_team"
     t.integer "jersey_number"
     t.string "position"
+    t.string "previous_teams"
+    t.string "hand"
+    t.boolean "active", default: true
+    t.integer "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "team_id"
   end
 
   create_table "stats", force: :cascade do |t|
@@ -62,6 +74,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_06_084336) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "bio", default: "As an avid NHL fan, I find sheer excitement in the thrilling battles that unfold on the icy arena. The adrenaline rush of each game, the remarkable skills of the players, and the camaraderie among fellow fans create an unmatched experience. With unwavering dedication, I cheer for my team, dreaming of the day they'll lift the Stanley Cup, and the joy it will bring to all of us who share this passion. 🏒🥅🏆"
+    t.string "icon", default: "../images/icon.png"
+    t.string "token"
+    t.boolean "admin", default: false
   end
 
 end

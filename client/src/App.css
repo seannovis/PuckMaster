@@ -1,38 +1,1255 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body,
+.app {
+  background-color: #e0f4f9; 
   min-height: 100vh;
+}
+
+.form-box {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #4b0071;
+  border-radius: 10px;
+  background-color: #9ee7f6;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.form-box h3 {
+  margin-bottom: 15px;
+  text-align: center;
+  color: #4b0071;
+}
+
+.form-box label {
+  display: block;
+  margin-bottom: 1px;
+  color: #4b0071;
+}
+
+.form-box input[type="text"],
+.form-box input[type="password"],
+.form-box textarea {
+  width: 95%;
+  padding: 2px;
+  margin-bottom: 15px;
+  border: 1px solid #4b0071;
+  border-radius: 5px;
+}
+
+.form-box button[type="submit"] {
+  width: 95%;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4b0071;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 3px;
+}
+
+.form-box button[type="submit"]:hover {
+  background-color: #693e89;
+}
+
+.form-box .error-message {
+  color: #d9534f;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.toggle-container {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.toggle-container button.toggle-btn,
+.modal-button {
+  padding: 5px 10px;
+  margin-left: 7px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4b0071;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.toggle-container button.toggle-btn:hover,
+.modal-button:hover {
+  background-color: #693e89;
+}
+
+.login-text {
+  color: #4b0071;
+}
+
+div nav {
+  display: flex;
+  background-color: rgb(224, 244, 249); 
+  color: #fff;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+div nav span,
+nav span {
+  margin-right: 10px; 
+}
+
+nav .left-side a {
+  color: #4b0071;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.1s ease, background-color 0.1s ease, border-radius 0.1s ease;
+  border-radius: 5px;
+  padding: 8px 12px;
+}
+
+nav .nav-effect a:hover {
+  color: #ffffff;
+  background-color: #4b0071;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+div.nav button,
+nav button {
+  color: #000000;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.1s ease, background-color 0.1s ease, border-radius 0.1s ease;
+  border-radius: 5px;
+  padding: 8px 12px;
+}
+
+div.nav button:hover,
+nav button:hover {
+  color: #ffffff;
+  background-color: #ff0000;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav .left-side {
+  display: flex;
+  align-items: center;
+}
+
+nav .right-side {
+  display: flex;
+  align-items: center;
+  margin-right: -10px;
+}
+
+nav .right-side span {
+  margin-right: 10px;
+}
+
+nav .right-side span:last-child {
+  margin-right: 0;
+}
+
+.username-link {
+  color: #000;
+  position: relative; 
+  padding-top: 30px;
+}
+
+.username-link img {
+  position: absolute; 
+  top: 0; 
+  left: 50%;
+  transform: translateX(-50%); 
+}
+
+#home-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 200px 1fr;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#home-content h1 {
+  grid-column: 1 / span 2;
+  color: #4b0071;
+}
+
+#home-content h3 {
+  color: #4b0071;
+}
+
+#home-content p {
+  color: #333;
+}
+
+#home-content form {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#home-content form label {
+  margin-top: 10px;
+  color: #4b0071;
+}
+
+#home-content form input[type="text"] {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #4b0071;
+  border-radius: 5px;
+}
+
+#home-content form button[type="submit"] {
+  width: 100%;
+  max-width: 100px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4b0071;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#home-content form button[type="submit"]:hover {
+  background-color: #693e89;
+}
+
+#home-content button,
+.confirm-trade button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4b0071;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#home-content button:hover,
+.confirm-trade button:hover {
+  background-color: #693e89;
+}
+
+#home-content h5 {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: #4b0071;
+  font-style: italic;
+  font-size: medium;
+}
+
+.bio {
+  grid-row: 2;
+  grid-column: 2;
+  margin-right: 20px;
+  margin-top: 50%;
+  margin-bottom: 20px;
+}
+
+.teams {
+  grid-row: 2;
+  grid-column: 1;
+  margin-left: 10px;
+  margin-top: 50%;
+  margin-bottom: 20px;
+}
+
+.players {
+  grid-row: 1;
+  grid-column: 1;
+  margin-left: 10px;
+}
+
+.draftees {
+  grid-row: 1;
+  grid-column: 2;
+  margin-right: 10px;
+}
+
+.player-cards-container {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.placeholder-card {
+  width: 158px;
+  height: 200px;
+  border: 1px solid #000;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.placeholder-card img {
+  width: 80%;
+  height: 55%;
+}
+
+.logo {
+  width: 270px; 
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px; 
+  height: 180px;
+  border-radius: 60%;
+}
+
+.nav-logo {
+  width: 120px;
+  height: 70px;
+  border-radius: 60%;
+}
+
+.nhl-img {
+  width: 200px;
+  height: 200px;
+  margin-top: 10px;
+}
+
+.team-card,
+.player-card,
+.draftee-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-card {
+  height: 420px;
+  width: 280px;
+}
+
+.team-card {
+  position: relative; 
+}
+
+.team-card img {
+  width: 235px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.team-card h2,
+.player-card h2,
+.draftee-card h2, h6 {
+  margin-top: 10px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.team-card p,
+.player-card p,
+.draftee-card p {
+  margin: 5px 0;
+  text-align: center;
+  font-size: smaller;
+}
+
+.checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.team-card.checked,
+.player-card.checked {
+  background-color: #9ee7f6;
+  border: 2px solid #000000;
+}
+
+.custom-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.custom-checkbox {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.custom-checkbox.checked {
+  background-color: #4b0071;
+}
+
+.custom-checkbox-label input[type="checkbox"] {
+  display: none;
+}
+
+.player-checkbox-container,
+.checkbox-container {
+  margin-top: auto;
+}
+
+.custom-checkbox-label.disabled {
+  cursor: not-allowed; 
+  opacity: 0.5; 
+}
+
+.profile-button {
+  width: 85px;
+  height: 35px;
+  border: none;
+  border-radius: 50%;
+  background-color: #4b0071;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.profile-button:hover {
+  background-color: #693e89;
+}
+
+
+nav .user-button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  color: black;
+}
+
+nav .user-button img {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+}
+
+nav .user-button span {
+  color: #000000;
+  transition: color 0.1s ease, background-color 0.1s ease, border-radius 0.1s ease;
+  border-radius: 5px;
+  padding: 8px 12px;
+}
+
+nav .user-button:hover span {
+  color: #ffffff;
+  background-color: #4b0071;
+  font-weight: bold;
+}
+
+.user-container {
+  display: flex;
+  align-items: center;
+}
+
+.user-container img {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+}
+
+.user-container .user-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  color: #4b0071;
+  position: relative;
+}
+
+.user-container .user-button:hover {
+  background-color: #4b0071;
+  color: #fff;
+  font-weight: bold;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+  padding: 10px;
+}
+
+.dropdown-menu p {
+  color: #4b0071;
+  margin: 5px 0;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+
+.dropdown-menu p:hover {
+  background-color: #4b0071;
+  color: #fff;
+  font-weight: bold;
+}
+
+.dropdown-divider {
+  border-bottom: 1px solid #ccc;
+  margin: 5px 0;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.modal.fade.show {
+  display: block;
+}
+
+.modal-dialog {
+  position: relative;
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  color: #4b0071; 
+}
+
+.modal-content {
+  border: none;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0;
+  border-bottom: none;
+}
+
+.modal-header .close {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  opacity: 0.5;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.modal-header .close:hover {
+  opacity: 1;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-body button {
+  margin-right: 10px;
+}
+
+.modal-body .btn-primary,
+.modal-footer .btn-primary {
+  background-color: #4b0071;
+  color: #fff;
+  font-size: 16px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-body .btn-primary:hover,
+.modal-footer .btn-primary:hover{
+  background-color: #693e89;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+  border-top: none;
+}
+
+.modal-footer button {
+  margin-right: 10px;
+}
+
+.team-img {
+  cursor: pointer;
+}
+
+.fav-team {
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: xx-large;
+}
+
+.team-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-image-container img {
+  margin-bottom: 10px; 
+}
+
+.home-link {
+  color: #000000; 
+  text-decoration: none; 
+  font-weight: bold; 
+}
+
+.home-link:visited {
+  color: #000000; 
+}
+
+.searchbar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.searchbar label {
+  margin-right: 10px;
+  margin-left: 20px;
+  color: #000000;
+}
+
+.searchbar input[type="text"] {
+  width: 200px;
+  padding: 8px;
+  border: 1px solid #4b0071;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.searchbar input[type="text"]:hover {
+  background-color: #f0eff5;
+}
+
+.teams-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.draftees-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; 
+  margin-top: -55px;
+  margin-bottom: 40px;
+}
+
+.team-dropdown,
+.draftee-dropdown,
+.trade-dropdown,
+.pick-trade,
+.player-trade,
+.retire-dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #4b0071;
+  border-radius: 5px;
+  padding: 5px 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 10px;
+}
+
+.team-dropdown label,
+.draftee-dropdown label,
+.trade-dropdown label,
+.pick-trade label,
+.player-trade label,
+.retire-dropdown label {
+  margin-right: 5px;
+  color: #4b0071;
+}
+
+.team-dropdown select,
+.draftee-dropdown select,
+.trade-dropdown select {
+  padding: 2px;
+  border: none;
+  background-color: transparent;
+  color: #4b0071;
+  font-weight: bold;
+}
+
+.team-dropdown-container,
+.draftee-dropdown-container,
+.trade-dropdown-container {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.password-eye {
+  height: 20px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.password-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.password-container .password-eye {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+
+.admin-container {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #4b0071;
+  border-radius: 10px;
+  background-color: #9ee7f6;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.admin-title {
+  margin-bottom: 15px;
+  margin-top: 20px;
+  text-align: center;
+  color: #000000;
+}
+
+.admin-subtitle {
+  color: #000000;
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+
+.admin-paragraph {
+  color: #4b0071;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-form label {
+  margin-bottom: 5px;
+  margin-top: 20px;
+  color: #4b0071;
+  margin-left: 10px;
+}
+
+.bio-form {
+  width: 30%;
+  padding: 8px;
+  margin-top: 15px;
+  border: 1px solid #4b0071;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.submit-button {
+  width: 20%;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4b0071;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 10px;
   }
-  to {
-    transform: rotate(360deg);
+
+.submit-button:hover {
+  background-color: #693e89;
+}
+
+.error-message {
+  color: #d9534f;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.enjoy-message {
+  text-align: center;
+  color: #4b0071;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.account-container {
+  margin-top: 30px;
+}
+
+.account-container h1 {
+  text-align: center;
+  color: #4b0071;
+}
+
+.account-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-form label {
+  margin-bottom: 5px;
+  color: #000000;
+  margin-left: 10px;
+  margin-top: 25px;
+}
+
+.user-form,
+.bio-form {
+  width: 30%;
+  padding: 8px;
+  border: 1px solid #4b0071;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-bottom: -10px;
+}
+
+.account-form button {
+  width: 20%;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4b0071;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.account-form button:hover {
+  background-color: #693e89;
+}
+
+.account-details,
+.account-details-other {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.account-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.account-details h7,
+.account-details-other h7 {
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.account-details p {
+  color: #000000;
+  cursor: pointer;
+  margin-right: 30px;
+}
+
+.account-details p:hover {
+  text-decoration: underline;
+}
+
+.account-details b,
+.account-details-other b {
+  font-weight: bold;
+}
+
+.account-details .edit-button {
+  margin-left: 10px;
+}
+
+.account-details .edit-button:hover {
+  background-color: #693e89;
+}
+
+.account-date {
+  margin-top: 35px;
+  margin-bottom: 10px;
+}
+
+.no-results {
+  color: #4b0071;
+  margin-left: 20px;
+}
+
+.home-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.home-modal-dialog {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.home-modal-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.home-modal-header .closeModal {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.home-modal-body {
+  padding: 20px;
+}
+
+.home-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.trade-header {
+  text-align: center;
+}
+
+.trade-header b {
+  cursor: pointer;
+}
+
+.trade-dropdown-container {
+  margin-left: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.trade-centre-container {
+  margin-top: -30px;
+}
+
+.trade, .retire, .pickup, .trade-history {
+  margin-top: 20px;
+}
+
+.trade h3, .retire h3, .pickup h3, .trade-history h3 {
+  margin-bottom: 10px;
+  text-align: center;
+  color: #4b0071;
+}
+
+.trade .player-trade, .trade .pick-trade {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  height: 120px;
+  width: 350px;
+}
+
+.trade .player-trade label, .trade .pick-trade label {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #4b0071;
+  justify-content: center;
+}
+
+.trade .player-trade select, .trade .pick-trade select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #4b0071;
+  justify-content: center;
+}
+
+.retire button {
+  width: 20%;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4b0071;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.retire button:hover {
+  background-color: #693e89;
+}
+
+.trade-button {
+  width: 150px;
+  padding: 8px;
+  border: 2px solid #4b0071;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #4b0071;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.pickup form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pickup form label {
+  margin-top: 10px;
+  color: #4b0071;
+}
+
+.pickup form input[type="text"] {
+  width: 20%;
+  max-width: 300px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #4b0071;
+  border-radius: 5px;
+}
+
+.pickup form button[type="submit"] {
+  width: 30%;
+  max-width: 100px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4b0071;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.pickup form button[type="submit"]:hover {
+  background-color: #693e89;
+}
+
+.trade-history h3 {
+  text-align: center;
+  color: #4b0071;
+}
+
+.trade {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.trade-left-side {
+  flex: 1;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trade-right-side {
+  flex: 1;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.submit-and-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hide-arrows {
+  display: none;
+}
+
+.retire {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.retire-dropdown {
+  width: 200px;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.retire-dropdown-label {
+  text-align: center;
+}
+
+.hide-button {
+  display: none;
+}
+
+.signing-form,
+.signing-form-jersey {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  margin-bottom: -40px;
+}
+
+.team-trade {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-bottom: 20px;
+  height: 100px;
+}
+
+.team-trade label {
+  margin-bottom: 5px;
+  text-align: center;
+  color: #4b0071;
+}
+
+.team-trade select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #4b0071;
+}
+
+
+.select-team-trade {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  margin-bottom: 20px;
+  height: 120px;
+  width: 300px;
+}
+
+.select-team-trade select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #4b0071;
+  justify-content: center;
+}
+
+.select-team-trade label {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #4b0071;
+    justify-content: center;
+}
+
+.confirm-trade {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4b0071;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.confirm-trade:hover {
+  background-color: #693e89;
+}
+
+.move-arrows {
+  margin-top: 200px;
+}
+
+.trade-submit-button {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4b0071;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
   }
+
+.trade-submit-button:hover {
+  background-color: #693e89;
+}
+
+.home-modal-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.currently-selected {
+  margin-left: 20px;
 }
