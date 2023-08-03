@@ -35,28 +35,23 @@ class UsersController < ApplicationController
         user = find_user
         user.bio = user_params[:bio]
         user.save(validate: false)
-    end
-
-    def update_username
-        user = find_user
-        user.username = user_params[:username]
-        user.save(validate: false)
+        render json: user, status: :ok 
     end
 
     def update_token
         user = find_user
-        if params[:token].present?
-            token = AdminToken.find_by(token: params[:token], active: false)
-            if token
-                token.update(active: true)
-                user.token = user_params[:token]
-                session[:admin_id] = token.id
-                user.admin = true
-                user.save(validate: false)
-            else
-                render json: { error: "Admin token not valid" }, status: :unprocessable_entity
-            end
-        end
+        token = AdminToken.find_by(token: params[:token], active: false)
+        if token
+            token.update(active: true)
+            user.token = user_params[:token]
+            session[:admin_id] = token.id
+            user.admin = true                
+            user.save(validate: false)
+            render json: user, status: :ok 
+        else
+            render json: { error: "Admin token not valid" }, status: :unprocessable_entity
+        end  
+         
     end
   
     private

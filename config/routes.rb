@@ -13,7 +13,6 @@ Rails.application.routes.draw do
 
   patch '/token/:username', to: 'users#update_token'
   patch '/bio/:username', to: 'users#update_bio'
-  patch '/username/:username', to: 'users#update_username'
 
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

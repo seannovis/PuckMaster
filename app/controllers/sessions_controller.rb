@@ -3,18 +3,12 @@ class SessionsController < ApplicationController
     def create
         user = User.find_by(username: params[:username])
         if user&.authenticate(params[:password])
-            if user.admin && params[:token].present?
-                token = AdminToken.find_by(token: params[:token])
-                if token
-                    user.token = params[:token]
-                    session[:admin_id] = token.id
-                    render json: user, status: :ok
-                else
-                    render json: { error: "Admin token not valid" }, status: :unprocessable_entity
-                end
+            if user.admin
+                session[:admin_id] = user.id
             else
                 session[:user_id] = user.id       
             end
+        render json: user, status: :ok
         else
             unauthorized_error
         end

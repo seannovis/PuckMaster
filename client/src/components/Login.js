@@ -8,6 +8,8 @@ export default function Login({ user, onLogin, onSignUp }) {
   
     return (
       <React.Fragment>
+        <div className="login-container">
+
         <Logo />
         <div className="form-box">
           {showLogin ? (
@@ -39,6 +41,8 @@ export default function Login({ user, onLogin, onSignUp }) {
               </button>
             </p>
           )}
+        </div>
+
         </div>
       </React.Fragment>
     );

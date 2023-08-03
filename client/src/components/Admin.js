@@ -3,10 +3,11 @@ import React, {useState} from "react";
 export default function Admin({user}){
 
     const [token, setToken] = useState(false);
-    const [userToken, setUserToken] = useState(null);
+    const [userToken, setUserToken] = useState('');
     const [errors, setErrors] = useState([]);
+    const [correct, setCorrect] = useState('');
 
-      function submitToken(e){
+    function submitToken(e){
         e.preventDefault();
         const updatedToken = { token: userToken };
       
@@ -19,18 +20,17 @@ export default function Admin({user}){
         })
         .then((res) => {
             res.json()
-            .then((data) => {
+            .then(() => {
                 if (res.ok) {
-                    console.log(data);
-                    setUserToken(updatedToken.token);
+                    setUserToken('');
                     setToken(false);
+                    setCorrect('Success! You are now an admin and can edit PuckMaster.')
                 } else {
                     res.json().then((err) => {
-                      if (!errors.includes(err.error)) {
-                          setErrors([...errors, err.error])
-                      } else {
-                          setErrors([...errors])
-                      }
+                      if (err.error) {
+                      setErrors(err.error)
+                      console.log(errors)
+                    }  
                 })
                 }
             })
@@ -53,12 +53,11 @@ export default function Admin({user}){
                   <label htmlFor="token">Enter your token:</label>
                   <input className="bio-form" type="text" onChange={(e) => setUserToken(e.target.value)} id="token" /><br />
                   <button className="submit-button" onClick={submitToken}>Submit</button>
+                  <p className="admin-message">{correct}</p>
                 </form>
     
                 <main className='error-message'>
-                  {errors.map((err) => (
-                    <p key={err} className="error">{err}</p>
-                  ))}
+                  <p className="error">{errors}</p>
                 </main>
     
               </React.Fragment>

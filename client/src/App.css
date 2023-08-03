@@ -1,7 +1,12 @@
 body,
-.app {
+.app,
+.login-container {
   background-color: #e0f4f9; 
   min-height: 100vh;
+}
+
+.login-container {
+  margin-top: -30px;
 }
 
 .form-box {
@@ -1252,4 +1257,9 @@ nav .user-button:hover span {
 
 .currently-selected {
   margin-left: 20px;
+}
+
+.admin-message{
+  margin-left: 20px;
+  margin-top: 20px;
 }

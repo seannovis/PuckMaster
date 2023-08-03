@@ -789,53 +789,53 @@ require 'faker'
 #   )
 
 
-# 10.times do
-#   token = BCrypt::Password.create(SecureRandom.hex(32))
-#   AdminToken.create(token: token)
-# end
+10.times do
+  token = BCrypt::Password.create(SecureRandom.hex(32))
+  AdminToken.create(token: token)
+end
 
 
 
-puts "seeding"
+# puts "seeding"
 
-hands = ["Right", "Left"]
+# hands = ["Right", "Left"]
 
-positions = ["Goalie", "Defenseman", "Center", "Right Wing", "Left Wing"]
+# positions = ["Goalie", "Defenseman", "Center", "Right Wing", "Left Wing"]
 
-nhl_teams = {
-  "Anaheim Ducks" => 24,
-  "Arizona Coyotes" => 53,
-  "Boston Bruins" => 6,
-  "Buffalo Sabres" => 7,
-  "Calgary Flames" => 20,
-  "Carolina Hurricanes" => 12,
-  "Chicago Blackhawks" => 16,
-  "Colorado Avalanche" => 21,
-  "Columbus Blue Jackets" => 29,
-  "Dallas Stars" => 25,
-  "Detroit Red Wings" => 17,
-  "Edmonton Oilers" => 22,
-  "Florida Panthers" => 13,
-  "Los Angeles Kings" => 26,
-  "Minnesota Wild" => 30,
-  "Montréal Canadiens" => 8,
-  "Nashville Predators" => 18,
-  "New Jersey Devils" => 1,
-  "New York Islanders" => 2,
-  "New York Rangers" => 3,
-  "Ottawa Senators" => 9,
-  "Philadelphia Flyers" => 4,
-  "Pittsburgh Penguins" => 5,
-  "San Jose Sharks" => 28,
-  "Seattle Kraken" => 55,
-  "St. Louis Blues" => 19,
-  "Tampa Bay Lightning" => 14,
-  "Toronto Maple Leafs" => 10,
-  "Vancouver Canucks" => 23,
-  "Vegas Golden Knights" => 54,
-  "Washington Capitals" => 15,
-  "Winnipeg Jets" => 52
-}
+# nhl_teams = {
+#   "Anaheim Ducks" => 24,
+#   "Arizona Coyotes" => 53,
+#   "Boston Bruins" => 6,
+#   "Buffalo Sabres" => 7,
+#   "Calgary Flames" => 20,
+#   "Carolina Hurricanes" => 12,
+#   "Chicago Blackhawks" => 16,
+#   "Colorado Avalanche" => 21,
+#   "Columbus Blue Jackets" => 29,
+#   "Dallas Stars" => 25,
+#   "Detroit Red Wings" => 17,
+#   "Edmonton Oilers" => 22,
+#   "Florida Panthers" => 13,
+#   "Los Angeles Kings" => 26,
+#   "Minnesota Wild" => 30,
+#   "Montréal Canadiens" => 8,
+#   "Nashville Predators" => 18,
+#   "New Jersey Devils" => 1,
+#   "New York Islanders" => 2,
+#   "New York Rangers" => 3,
+#   "Ottawa Senators" => 9,
+#   "Philadelphia Flyers" => 4,
+#   "Pittsburgh Penguins" => 5,
+#   "San Jose Sharks" => 28,
+#   "Seattle Kraken" => 55,
+#   "St. Louis Blues" => 19,
+#   "Tampa Bay Lightning" => 14,
+#   "Toronto Maple Leafs" => 10,
+#   "Vancouver Canucks" => 23,
+#   "Vegas Golden Knights" => 54,
+#   "Washington Capitals" => 15,
+#   "Winnipeg Jets" => 52
+# }
 
 # i = 193
 
@@ -864,30 +864,30 @@ nhl_teams = {
 
 # end
 
-300.times do 
+# 300.times do 
 
-  first_name = Faker::Name.unique.male_first_name
-  last_name = Faker::Name.last_name
-  name = "#{first_name} #{last_name}"
+#   first_name = Faker::Name.unique.male_first_name
+#   last_name = Faker::Name.last_name
+#   name = "#{first_name} #{last_name}"
 
-  def random_previous_teams(teams)
-    num_previous_teams = rand(0..2)
-    teams.sample(num_previous_teams).join(', ')
-  end
+#   def random_previous_teams(teams)
+#     num_previous_teams = rand(0..2)
+#     teams.sample(num_previous_teams).join(', ')
+#   end
   
-  random_team = nhl_teams.keys.sample
-  team_id = nhl_teams[random_team]
+#   random_team = nhl_teams.keys.sample
+#   team_id = nhl_teams[random_team]
   
-  Player.create(
-  full_name: name,
-  current_team: random_team,
-  jersey_number: rand(1..99),
-  position: positions.sample,
-  previous_teams: random_previous_teams(nhl_teams.keys),
-  hand: hands.sample,
-  active: true,
-  team_id: team_id
-)
-end
+#   Player.create(
+#   full_name: name,
+#   current_team: random_team,
+#   jersey_number: rand(1..99),
+#   position: positions.sample,
+#   previous_teams: random_previous_teams(nhl_teams.keys),
+#   hand: hands.sample,
+#   active: true,
+#   team_id: team_id
+# )
+# end
 
 puts "done"
