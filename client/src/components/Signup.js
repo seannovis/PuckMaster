@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import show from '../helpers/show.png';
 import hide from '../helpers/hide.png';
 
-export default function Signup({ defaultBio, defaultIcon, onLogin, onSignUp }) {
+export default function Signup({ defaultBio, defaultIcon, onLogin, onSignUp,
+setFavGoalie, setFavDefenseman, setFavRightWing, setFavLeftWing, setFavCenter,  
+setRookieGoalie, setRookieDefenseman, setRookieRightWing, setRookieLeftWing, setRookieCenter }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
@@ -58,6 +60,16 @@ export default function Signup({ defaultBio, defaultIcon, onLogin, onSignUp }) {
             });
           }
         });
+        setFavGoalie('');
+        setFavDefenseman('');
+        setFavRightWing('');
+        setFavLeftWing('');
+        setFavCenter('');
+        setRookieGoalie('');
+        setRookieDefenseman('');
+        setRookieRightWing('');
+        setRookieLeftWing('');
+        setRookieCenter('');
     }
     
     return (

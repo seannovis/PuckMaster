@@ -2,7 +2,10 @@ import React, {useState} from "react";
 import show from '../helpers/show.png';
 import hide from '../helpers/hide.png';
 
-export default function LoginForm({onLogin}) {
+export default function LoginForm({onLogin,
+setFavGoalie, setFavDefenseman, setFavRightWing, setFavLeftWing, setFavCenter,  
+setRookieGoalie, setRookieDefenseman, setRookieRightWing, setRookieLeftWing, setRookieCenter}) {
+    
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
@@ -33,8 +36,19 @@ export default function LoginForm({onLogin}) {
               })
             }
           })
+          setFavGoalie('');
+          setFavDefenseman('');
+          setFavRightWing('');
+          setFavLeftWing('');
+          setFavCenter('');
+          setRookieGoalie('');
+          setRookieDefenseman('');
+          setRookieRightWing('');
+          setRookieLeftWing('');
+          setRookieCenter('');
         }
          
+        
     return (
         <React.Fragment>
               <form onSubmit={handleSubmit}>

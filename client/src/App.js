@@ -21,6 +21,7 @@ function App() {
   const [rookieCenter, setRookieCenter] = useState(localStorage.getItem("rookieCenter") || "");
   const [randomTeam2, setRandomTeam2] = useState(null);
   const [team2, setTeam2] = useState(false);
+  console.log(randomTeam2)
 
   function onSignUp(){
     setSignedUp(true)
@@ -103,7 +104,10 @@ function App() {
     });
   }, []);
 
-   if (!user) {return (<Login onSignUp={onSignUp} onLogin={setUser} defaultBio={bio} defaultIcon={icon} />)
+   if (!user) {return (<Login onSignUp={onSignUp} onLogin={setUser} defaultBio={bio} defaultIcon={icon} setRandomTeam2={setRandomTeam2}
+    setFavGoalie={setFavGoalie} setFavDefenseman={setFavDefenseman} setFavRightWing={setFavRightWing} setFavLeftWing={setFavLeftWing} setFavCenter={setFavCenter}
+    setRookieGoalie={setRookieGoalie} setRookieDefenseman={setRookieDefenseman} setRookieRightWing={setRookieRightWing} setRookieLeftWing={setRookieLeftWing} setRookieCenter={setRookieCenter}
+    />)
   } else {return (
     <React.Fragment>
       <div className='app'>

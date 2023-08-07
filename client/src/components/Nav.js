@@ -44,7 +44,7 @@ export default function Nav({ user, setUser, onSignUp }) {
               <Link to="/draftees">2023 Draft</Link>
             </span>
             <span className="nav-effect">
-              <Link to="/trade-centre">Trade</Link>
+              <Link to="/trade-centre">Trade Centre</Link>
             </span>
           </div>
 

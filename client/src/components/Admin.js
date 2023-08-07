@@ -19,22 +19,19 @@ export default function Admin({user}){
           body: JSON.stringify(updatedToken), 
         })
         .then((res) => {
-            res.json()
-            .then(() => {
-                if (res.ok) {
-                    setUserToken('');
-                    setToken(false);
-                    setCorrect('Success! You are now an admin and can edit PuckMaster.')
-                } else {
-                    res.json().then((err) => {
-                      if (err.error) {
-                      setErrors(err.error)
-                      console.log(errors)
-                    }  
-                })
-                }
-            })
-        })
+          if (res.ok) {
+              setUserToken('');
+              setToken(false);
+              setCorrect('Success! You are now an admin and can edit PuckMaster.');
+          } else {
+              return res.json().then((err) => {
+                  if (err.error) {
+                      setErrors([err.error]);
+                      console.log(errors);
+                  }
+              });
+          }
+      })
     }
 
     return (
@@ -64,4 +61,5 @@ export default function Admin({user}){
           }
         </React.Fragment>
       );
-    }
+  }
+  

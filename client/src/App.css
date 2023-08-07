@@ -64,6 +64,10 @@ body,
   margin-bottom: 10px;
 }
 
+.error {
+  margin-left: 20px;
+}
+
 .toggle-container {
   text-align: center;
   margin-top: 15px;
@@ -84,6 +88,14 @@ body,
 .toggle-container button.toggle-btn:hover,
 .modal-button:hover {
   background-color: #693e89;
+}
+
+
+.next-button {
+    display: block; 
+    position: absolute;
+    right: 0; 
+    bottom: 0;
 }
 
 .login-text {
@@ -964,6 +976,7 @@ nav .user-button:hover span {
 .home-modal-footer {
   display: flex;
   justify-content: flex-end;
+  position: relative; 
 }
 
 .trade-header {
@@ -1234,15 +1247,15 @@ nav .user-button:hover span {
 .trade-submit-button {
   padding: 8px;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #4b0071;
   color: #fff;
   font-size: 16px;
   cursor: pointer;
   margin-top: 10px;
   margin-left: 10px;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   }
 
@@ -1262,4 +1275,66 @@ nav .user-button:hover span {
 .admin-message{
   margin-left: 20px;
   margin-top: 20px;
+}
+
+.pickup {
+  margin-top: -20px;
+}
+
+.page-title {
+  color: #4b0071;
+  text-align: center;
+}
+
+.not-admin {
+  text-align: center;
+  margin: 20px;
+  margin-top: 200px;
+  padding: 20px;
+}
+
+.not-admin h3 {
+  font-size: 24px;
+  color: #000000;
+}
+
+.not-admin p {
+  font-size: 16px;
+  color: #000000;
+  margin-top: 20px;
+}
+
+.not-admin a {
+  color: #000000; 
+  text-decoration: none; 
+  font-weight: bold; 
+  display: inline;
+}
+
+.no-page {
+  text-align: center;
+  margin-top: 200px;
+}
+
+.snackbar-modal-overlay {
+  z-index: 9999; 
+}
+
+.snackbar-modal {
+  position: fixed;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 10000; 
+  width: 200px;
+  height: 100px;
+}
+
+.snackbar-modal h5,
+.snackbar-modal p {
+  text-align: center;
 }

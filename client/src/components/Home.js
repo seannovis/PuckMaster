@@ -30,7 +30,7 @@ team2, randomTeam2, unfavourite2, setRandomTeamInHome}) {
         },
         {
           title: 'Team',
-          content: 'View all the teams, filter by division, and select your favourite team!',
+          content: 'View all the teams, filter by division, and select your favourite team. Be sure to check out each teams players, draftees and stats!',
         },
         {
           title: 'Players',
@@ -202,7 +202,7 @@ team2, randomTeam2, unfavourite2, setRandomTeamInHome}) {
                 }
                 
                 {activeModal < modals.length - 1 ?
-                (<button className="modal-button" onClick={nextModal}>Next</button>)
+                (<button className={`modal-button ${activeModal === 0 ? "next-button" : ""}`} onClick={nextModal}>Next</button>)
                 :
                 (<button className="modal-button" onClick={closeModal}>Finish</button>)
                 }

@@ -65,7 +65,7 @@ class UsersController < ApplicationController
     end
   
     def render_unprocessable_entity
-        render json: { error: "Must enter valid username and password" }, status: :unprocessable_entity
+        render json: { error: "Must enter unique username and password" }, status: :unprocessable_entity
     end
   
     def authorized

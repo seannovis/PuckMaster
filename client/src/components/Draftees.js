@@ -115,6 +115,7 @@ rookieGoalie, rookieDefenseman, rookieRightWing, rookieLeftWing, rookieCenter}) 
 
   return (
     <React.Fragment>
+      <h1 className="page-title">2023 Draft</h1>
       <SearchPlayer searchTerm={searchTerm} onSearchChange={setSearchTerm} />
       <div className="draftees-header">
         <DropdownPositions selectedPosition={selectedPosition} onPositionChange={handlePositionChange} />

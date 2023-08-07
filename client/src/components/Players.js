@@ -118,6 +118,7 @@ favGoalie, favDefenseman, favRightWing, favLeftWing, favCenter}) {
 
   return (
     <React.Fragment>
+      <h1 className="page-title">Players</h1>
       <SearchPlayer searchTerm={searchTerm} onSearchChange={setSearchTerm} />
       <div className="draftees-header">
         <DropdownPositions selectedPosition={selectedPosition} onPositionChange={handlePositionChange} />

@@ -48,6 +48,7 @@ export default function Teams({setRandomTeamInHome}) {
 
   return (
     <React.Fragment>
+      <h1 className="page-title">Teams</h1>
       <div className="teams-header">
         <TeamSearch searchTerm={searchTerm} onSearchChange={setSearchTerm} />
         <TeamDropdown selectedDivision={selectedDivision} onDivisionChange={handleDivisionChange} />

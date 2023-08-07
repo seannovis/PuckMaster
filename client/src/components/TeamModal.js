@@ -29,11 +29,11 @@ export default function TeamModal({ show, onClose, teamName, onFetchData, modalC
           </div>
           <div className="modal-body">
             <div className="modal-buttons">
-              <button type="button" className="btn btn-primary" onClick={handleFetchPlayers} >
-                Players
+            <button type="button" className="btn btn-primary" onClick={handleFetchStats} >
+                2023 Statistics
               </button>
-              <button type="button" className="btn btn-primary" onClick={handleFetchStats} >
-                Stats
+              <button type="button" className="btn btn-primary" onClick={handleFetchPlayers} >
+                Current Roster
               </button>
               <button type="button" className="btn btn-primary" onClick={handleFetchDraftees} >
                 2023 Draftees
@@ -42,6 +42,19 @@ export default function TeamModal({ show, onClose, teamName, onFetchData, modalC
           <div>
               {modalContent ? (
                 <>
+                  {modalContent.stat ? (
+                    <div>
+                      <p>Conference Rank: {modalContent.stat.conference_rank}/16</p>
+                      <p>Wins: {modalContent.stat.wins}</p>
+                      <p>Losses: {modalContent.stat.losses}</p>
+                      <p>OT: {modalContent.stat.ot}</p>
+                      <p>Percentage: {modalContent.stat.perecentage}</p>
+                      <p>Points: {modalContent.stat.points}</p>
+                      <p>Goals Scored: {modalContent.stat.goals_scored}</p>
+                      <p>Goals Conceded: {modalContent.stat.goals_conceded}</p>
+                    </div>
+                  ) : null}
+
                   {modalContent.players ? (
                     <div>
                       <ul>
@@ -51,19 +64,6 @@ export default function TeamModal({ show, onClose, teamName, onFetchData, modalC
                           </p>
                         ):null)}
                       </ul>
-                    </div>
-                  ) : null}
-
-                  {modalContent.stat ? (
-                    <div>
-                      <p>Conference Rank: {modalContent.stat.conference_rank}</p>
-                      <p>Wins: {modalContent.stat.wins}</p>
-                      <p>Losses: {modalContent.stat.losses}</p>
-                      <p>OT: {modalContent.stat.ot}</p>
-                      <p>Percentage: {modalContent.stat.perecentage}</p>
-                      <p>Points: {modalContent.stat.points}</p>
-                      <p>Goals Conceded: {modalContent.stat.goals_conceded}</p>
-                      <p>Goals Scored: {modalContent.stat.goals_scored}</p>
                     </div>
                   ) : null}
 

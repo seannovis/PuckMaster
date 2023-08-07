@@ -37,7 +37,7 @@ export default function AppRoutes({ user, setUser, signedUp, onSignUp, hideHomeM
           allStarGoalie={allStarGoalie} allStarDefenseman={allStarDefenseman} allStarRightWing={allStarRightWing} allStarLeftWing={allStarLeftWing} allStarCenter={allStarCenter}/>} />
           <Route path="/draftees" element={<Draftees allRookieGoalie={allRookieGoalie} allRookieDefenseman={allRookieDefenseman} allRookieRightWing={allRookieRightWing} allRookieLeftWing={allRookieLeftWing} allRookieCenter={allRookieCenter}
           rookieGoalie={rookieGoalie} rookieDefenseman={rookieDefenseman} rookieRightWing={rookieRightWing} rookieLeftWing={rookieLeftWing} rookieCenter={rookieCenter}/>} />
-          <Route path="/trade-centre" element={<TradeCentre />} />
+          <Route path="/trade-centre" element={<TradeCentre user={user}/>} />
           <Route path="/*" element={<NoPageFound />} />
           <Route path="/account" element={<Account user={user}/>} />
           <Route path="/admin" element={<Admin user={user}/>} />

@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from "react";
 import TradeDropdown from "./TradeDropdown";
 import img from "../helpers/arrows.png";
+import { Link } from "react-router-dom";
+import Snackbar from "./Snackbar";
 
-
-export default function TradeCentre(){
+export default function TradeCentre({user}){
 
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
     21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
@@ -15,6 +16,8 @@ export default function TradeCentre(){
     const [selectedPlayer, setselectedPlayer] = useState('');
     const [retireError, setRetireError] = useState([])
     const [errors, setErrors] = useState([]);
+    const [snackbar, setSnackbar] = useState(false);
+    const [errorSnackbar, setErrorSnackbar] = useState(false);
 
     const [playerTradesLeft, setPlayerTradesLeft] = useState([{selectedPlayer: ''},]);
     const [pickTradesLeft, setPickTradesLeft] = useState([{ round: '', pick: '' }]);
@@ -122,13 +125,17 @@ export default function TradeCentre(){
               if (r.ok) {
                 r.json().then((t) => {
                     console.log(t)
+                    setPlayerTradesLeft([{selectedPlayer: ''},]);
+                    setSelectedPlayerLeft('');
                 });
             } else {
                 r.json().then((err) => {
                     setLeftError(err.error);
+                    setErrorSnackbar(true);
                 });
               }}
-        );   
+        );  
+        setSnackbar(true)
     }
 
     function tradeRight(){
@@ -142,15 +149,19 @@ export default function TradeCentre(){
           .then((r) => {
               if (r.ok) {
                 r.json().then((t) => {
-                    console.log(t)
+                    console.log(t);
+                    setPlayerTradesRight([{selectedPlayer: ''},]);
+                    setSelectedPlayerRight('');
                 });
             } else {
                 r.json().then((err) => {
                     setRightError(err.error);
+                    setErrorSnackbar(true);
                 });
               }
             }
         );   
+        setSnackbar(true);
     }
 
     function reset() {
@@ -271,6 +282,8 @@ export default function TradeCentre(){
           })
         )
         setSelectedPlayerLeft(selectedPlayerValue);
+        setLeftError('');
+        setErrorSnackbar(false);
       }
       
       function handleRightPlayerChange(e, index) {
@@ -285,6 +298,8 @@ export default function TradeCentre(){
           })
         )
         setSelectedPlayerRight(selectedPlayerValue);
+        setRightError('');
+        setErrorSnackbar(false);
       }
 
       function handleLeftPickChange(e, index) {
@@ -314,8 +329,25 @@ export default function TradeCentre(){
       }
     
     return (
+
+        
         <React.Fragment>
 
+            {
+            user.admin ? 
+            <React.Fragment>
+            {
+                snackbar ? 
+                <React.Fragment>
+                    <Snackbar
+                        duration={3000}
+                        onClose={() => setSnackbar(false)}
+                        errorSnackbar={errorSnackbar}
+                    /> 
+                </React.Fragment>
+                :
+                null
+            }
             <TradeDropdown selectedAction={action} onActionChange={handleActionChange}/>
             <div className="trade-centre-container">
             <h4 className="trade-header">Welcome to the Trade Centre</h4>
@@ -376,7 +408,7 @@ export default function TradeCentre(){
                                         </option>
                                         ):null)}
                                     </select>
-                                    <button className="confirm-trade" onClick={tradeLeft}>Confirm</button>
+                                    <button className="confirm-trade" onClick={tradeLeft}>Trade me</button>
                                     {
                                         selectedTeamLeft && leftError ?
                                         <main className='error-message'>
@@ -428,7 +460,7 @@ export default function TradeCentre(){
                 </div>
 
                 <div className={`submit-and-content ${selectedTeamLeft && selectedTeamRight ? 'move-arrows' : ''} ${selectedTeamLeft && selectedTeamRight ? '' : 'hide-arrows'}`}>
-                    <button onClick={reset} className='trade-submit-button'><b>Trade</b></button>
+                    <button onClick={reset} className='trade-submit-button'><b>Reset</b></button>
                     <b style={{ marginTop: '10px' }}>Remember to confirm each player first!</b>
                     <img height={'300px'} width={'300px'} src={img} alt="arrows" /> 
                 </div>
@@ -479,7 +511,7 @@ export default function TradeCentre(){
                                     </option>
                                     ):null)}
                                 </select>
-                                <button className="confirm-trade" onClick={tradeRight}>Confirm</button>
+                                <button className="confirm-trade" onClick={tradeRight}>Trade me</button>
                                 {
                                     selectedTeamRight && rightError ?
                                     <main className='error-message'>
@@ -641,7 +673,16 @@ export default function TradeCentre(){
                 null
             }
             </div>
+        </div> 
+        </React.Fragment>
+        : 
+        <div className="not-admin">
+            <h3>Only admins can edit this page.</h3>
+            <p>To find out more about becoming an admin, click <Link to="/admin" className="admin-link">here</Link></p>
         </div>
+        }
+
+            
 
         </React.Fragment>
     )
