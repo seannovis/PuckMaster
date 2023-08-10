@@ -22,7 +22,7 @@ export default function Admin({user}){
           if (res.ok) {
               setUserToken('');
               setToken(false);
-              setCorrect('Success! You are now an admin and can edit PuckMaster.');
+              setCorrect('Success! You are now an admin. Please refresh the page to edit PuckMaster.');
           } else {
               return res.json().then((err) => {
                   if (err.error) {

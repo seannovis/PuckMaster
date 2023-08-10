@@ -461,7 +461,6 @@ export default function TradeCentre({user}){
 
                 <div className={`submit-and-content ${selectedTeamLeft && selectedTeamRight ? 'move-arrows' : ''} ${selectedTeamLeft && selectedTeamRight ? '' : 'hide-arrows'}`}>
                     <button onClick={reset} className='trade-submit-button'><b>Reset</b></button>
-                    <b style={{ marginTop: '10px' }}>Remember to confirm each player first!</b>
                     <img height={'300px'} width={'300px'} src={img} alt="arrows" /> 
                 </div>
 
